@@ -1,6 +1,6 @@
 # Demo
 
-The goal of this demo is to describe and show the variouse components supported in the Weave GitOps Assured offering.
+The goal of this demo is to describe and show the various components supported in the Weave GitOps Assured offering.
 
 
 What is WeaveGitOps Assured (WGA)?
