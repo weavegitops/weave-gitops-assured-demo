@@ -9,8 +9,6 @@ Weave GitOps Assured is a comprehensive solution offered by Weaveworks, combinin
 
 [Please visit the FAQ for more information](https://www.weave.works/product/assured-faq/) 
 
-
-
 ## Setting up the demo
 
 ### Set up a Kubernetes cluster
@@ -22,7 +20,6 @@ For example, it is possible to the follow the [kind quick start guide](https://k
 kind create cluster
 ```
 
-
 ### Normal
 
 #### Install the Flux CLI
@@ -30,11 +27,20 @@ kind create cluster
 ```bash
 brew install jq yq fluxcd/tap/flux
 ```
-
 #### Install FluxCD 
 
 ```
 flux install --components-extra 'image-reflector-controller,image-automation-controller'
+```
+
+#### Install Github CLI 
+```
+brew install gh
+
+```
+#### Login to Github
+```
+gh login
 ```
 
 #### Set up Variables
@@ -77,6 +83,11 @@ spec:
     name: weave-gitops-assured-demo
   timeout: 3m
 EOF
+```
+
+Port forward the Kubenetes service to access the Weave GitOps UI
+```
+kubectl port-forward svc/ww-gitops-weave-gitops -n flux-system 9001:9001
 ```
 
 
