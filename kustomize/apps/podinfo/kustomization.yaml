@@ -4,3 +4,4 @@ resources:
 - app-ns.yaml
 - flagger-load-tester.yaml
 - podinfo-helmrelease.yaml
+- helm-repo.yaml

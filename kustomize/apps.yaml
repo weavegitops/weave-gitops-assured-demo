@@ -7,7 +7,7 @@ metadata:
 spec:
   interval: 6h
   wait: true
-  timeout: 5m
+  timeout: 30s
   prune: true
   dependsOn:
     - name: platform
