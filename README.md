@@ -123,13 +123,3 @@ cd weave-gitops-assured-demo
 ```
 gitops run --no-session --no-bootstrap kustomize/gitops-run
 ```
-
-```
-flux create helmrelease podinfo \
---namespace=default \
---source=HelmRepository/podinfo \
---release-name=podinfo \
---chart=podinfo \
---chart-version=">5.0.0" \
---values=kustomize/apps/podinfo/podinfo-values.yaml --export > kustomize/apps/podinfo/podinfo-helmrelease.yaml
-```
