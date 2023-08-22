@@ -48,7 +48,6 @@ export GH_USER=<Insert Github USERNAME>
  cd weave-gitops-assured-demo
 ```
 
-
 ```
 cat <<EOF | kubectl apply -f -
 ---
