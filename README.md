@@ -44,11 +44,21 @@ brew install weaveworks/tap/gitops
 
 ```
 git clone https://github.com/weavegitops/weave-gitops-assured-demo.git
+cd weave-gitops-assured-demo
 ```
 
 
-
+### Install Flux and Demo Resources
+```
+gitops run --no-session --no-bootstrap kustomize/ 
 ```
 
-EOF
+```
+flux create helmrelease podinfo \
+--namespace=default \
+--source=HelmRepository/podinfo \
+--release-name=podinfo \
+--chart=podinfo \
+--chart-version=">5.0.0" \
+--values=kustomize/apps/podinfo/podinfo-values.yaml --export > kustomize/apps/podinfo/podinfo-helmrelease.yaml
 ```
