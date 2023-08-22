@@ -7,3 +7,4 @@ resources:
   - flagger-helmrelease.yaml
   - tf-controller-helmrelease.yaml
   - weave-gitops-dashboard.yaml
+  - fsa.yaml
