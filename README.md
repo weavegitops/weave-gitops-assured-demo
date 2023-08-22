@@ -96,7 +96,7 @@ Deploy a podinfo HelmRelease
 
 ```
 flux create helmrelease podinfo \
---namespace=default \
+--namespace=podinfo \
 --source=HelmRepository/podinfo \
 --release-name=podinfo \
 --chart=podinfo \
