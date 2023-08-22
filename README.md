@@ -39,7 +39,7 @@ flux install --components-extra 'image-reflector-controller,image-automation-con
 
 #### Set up Variables
 ```
-export GH_USER=<Insert Github USERNAME>
+export GH_USER=$(gh api user | jq -r '.login')
 ```
 #### Set up Git Repository
 ```
@@ -71,7 +71,7 @@ metadata:
 spec:
   prune: true
   interval: 2m
-  path: "./demo"
+  path: "./kustomize"
   sourceRef:
     kind: GitRepository
     name: weave-gitops-assured-demo
