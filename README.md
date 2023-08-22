@@ -90,6 +90,22 @@ Port forward the Kubenetes service to access the Weave GitOps UI
 kubectl port-forward svc/ww-gitops-weave-gitops -n flux-system 9001:9001
 ```
 
+#### Deploy an application
+
+Deploy a podinfo HelmRelease
+
+```
+flux create helmrelease podinfo \
+--namespace=default \
+--source=HelmRepository/podinfo \
+--release-name=podinfo \
+--chart=podinfo \
+--chart-version=">5.0.0" \
+--values=kustomize/apps/podinfo/podinfo-values.yaml --export > kustomize/apps/podinfo/podinfo-helmrelease.yaml
+```
+
+
+
 
 ### GitOps Run
 
