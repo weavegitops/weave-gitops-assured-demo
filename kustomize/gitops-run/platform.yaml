@@ -10,6 +10,6 @@ spec:
   timeout: 5m
   prune: true
   sourceRef:
-    kind: GitRepository
-    name: weave-gitops-assured-demo
+    kind: Bucket
+    name: run-dev-bucket
   path: "./kustomize/platform"

@@ -15,7 +15,7 @@ Weave GitOps Assured is a comprehensive solution offered by Weaveworks, combinin
 
 ### Set up a Kubernetes cluster
 
-Set up a Kubernetes cluster that Flux and the Weave GitOps Assured offering can be installed onto.
+Set up a Kubernetes cluster that Flux and the Weave GitOps Assured offering demo can be installed onto.
 
 For example, it is possible to the follow the [kind quick start guide](https://kind.sigs.k8s.io/docs/user/quick-start/) and create a cluster with
 ```
@@ -23,7 +23,63 @@ kind create cluster
 ```
 
 
-### Install the GitOps CLI
+### Normal
+
+#### Install the Flux CLI
+
+```bash
+brew install jq yq fluxcd/tap/flux
+```
+
+#### Install FluxCD 
+
+```
+flux install --components-extra 'image-reflector-controller,image-automation-controller'
+```
+
+#### Set up Variables
+```
+export GH_USER=steve-fraser
+```
+#### Set up Git Repository
+```
+ gh repo create $GH_USER/weave-gitops-assured-demo --public --template=weavegitops/weave-gitops-assured-demo
+ gh repo clone $GH_USER/weave-gitops-assured-demo
+```
+
+
+```
+cat <<EOF | kubectl apply -f -
+---
+apiVersion: source.toolkit.fluxcd.io/v1
+kind: GitRepository
+metadata:
+  name: weave-gitops-assured-demo
+  namespace: flux-system
+spec:
+  interval: 30s
+  url: https://github.com/$GH_USER/weave-gitops-assured-demo.git
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: weave-gitops-assured-demo
+  namespace: flux-system
+spec:
+  prune: true
+  interval: 2m
+  path: "./demo"
+  sourceRef:
+    kind: GitRepository
+    name: weave-gitops-assured-demo
+  timeout: 3m
+EOF
+```
+
+
+### GitOps Run
+
+#### Install the GitOps CLI
 
 Mac / Linux
 
@@ -40,7 +96,7 @@ brew tap weaveworks/tap
 brew install weaveworks/tap/gitops
 ```
 
-### Clone Demo Repository  
+#### Clone Demo Repository  
 
 ```
 git clone https://github.com/weavegitops/weave-gitops-assured-demo.git
@@ -48,9 +104,10 @@ cd weave-gitops-assured-demo
 ```
 
 
-### Install Flux and Demo Resources
+
+#### Install Flux and Demo Resources
 ```
-gitops run --no-session --no-bootstrap kustomize/ 
+gitops run --no-session --no-bootstrap kustomize/gitops-run
 ```
 
 ```

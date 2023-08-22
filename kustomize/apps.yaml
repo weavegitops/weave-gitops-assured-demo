@@ -12,8 +12,6 @@ spec:
   dependsOn:
     - name: platform
   sourceRef:
-    # kind: OCIRepository
-    # name: weave-gitops-assured-demo
-    kind: Bucket
-    name: run-dev-bucket
+    kind: GitRepository
+    name: weave-gitops-assured-demo
   path: "./kustomize/platform"
