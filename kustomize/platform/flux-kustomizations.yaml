@@ -1,0 +1,75 @@
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
+kind: Kustomization
+metadata:
+  name: flagger
+  namespace: flux-system
+spec:
+  interval: 5m
+  wait: true
+  timeout: 5m
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: weave-gitops-assured-demo
+  path: "./kustomize/platform/flagger"
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
+kind: Kustomization
+metadata:
+  name: tf-controller
+  namespace: flux-system
+spec:
+  interval: 5m
+  wait: true
+  timeout: 5m
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: weave-gitops-assured-demo
+  path: "./kustomize/platform/tf-controller"
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
+kind: Kustomization
+metadata:
+  name: policy-agent
+  namespace: flux-system
+spec:
+  interval: 5m
+  wait: true
+  timeout: 5m
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: weave-gitops-assured-demo
+  path: "./kustomize/platform/policy-agent"
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
+kind: Kustomization
+metadata:
+  name: weave-gitops
+  namespace: flux-system
+spec:
+  interval: 5m
+  wait: true
+  timeout: 5m
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: weave-gitops-assured-demo
+  path: "./kustomize/platform/weave-gitops"
+# ---
+# apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
+# kind: Kustomization
+# metadata:
+#   name: flux-subsystem-for-argo
+#   namespace: flux-system
+# spec:
+#   interval: 5m
+#   wait: true
+#   timeout: 5m
+#   prune: true
+#   sourceRef:
+#     kind: GitRepository
+#     name: weave-gitops-assured-demo
+#   path: "./kustomize/platform/flux-subsystem-for-argo"
