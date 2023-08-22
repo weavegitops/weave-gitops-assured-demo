@@ -39,7 +39,7 @@ flux install --components-extra 'image-reflector-controller,image-automation-con
 
 #### Set up Variables
 ```
-export GH_USER=steve-fraser
+export GH_USER=<Insert Github USERNAME>
 ```
 #### Set up Git Repository
 ```
