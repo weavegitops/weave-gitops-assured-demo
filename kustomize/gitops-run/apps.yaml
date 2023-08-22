@@ -14,4 +14,4 @@ spec:
   sourceRef:
     kind: Bucket
     name: run-dev-bucket
-  path: "./kustomize/platform"
+  path: "./kustomize/apps"
