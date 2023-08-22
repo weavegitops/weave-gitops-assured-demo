@@ -100,7 +100,7 @@ flux create helmrelease podinfo \
 --source=HelmRepository/podinfo \
 --release-name=podinfo \
 --chart=podinfo \
---chart-version=">5.0.0" \
+--chart-version="6.4.0" \
 --values=kustomize/apps/podinfo/podinfo-values.yaml --export > kustomize/apps/podinfo/podinfo-helmrelease.yaml
 ```
 
