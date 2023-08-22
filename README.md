@@ -45,6 +45,7 @@ export GH_USER=<Insert Github USERNAME>
 ```
  gh repo create $GH_USER/weave-gitops-assured-demo --public --template=weavegitops/weave-gitops-assured-demo
  gh repo clone $GH_USER/weave-gitops-assured-demo
+ cd weave-gitops-assured-demo
 ```
 
 
@@ -59,6 +60,9 @@ metadata:
 spec:
   interval: 30s
   url: https://github.com/$GH_USER/weave-gitops-assured-demo.git
+  ref:
+    branch: main
+
 ---
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
