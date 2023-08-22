@@ -3,6 +3,7 @@ kind: Kustomization
 resources:
   - cert-manager-helmrelease.yaml
   - policy-agent-helmrelease.yaml
+  - istio-helmrelease.yaml
   - flagger-helmrelease.yaml
   - tf-controller-helmrelease.yaml
   - weave-gitops-dashboard.yaml

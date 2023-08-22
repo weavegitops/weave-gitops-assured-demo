@@ -5,3 +5,5 @@ resources:
 - flagger-load-tester.yaml
 - podinfo-helmrelease.yaml
 - helm-repo.yaml
+- gateway.yaml
+- flagger-metrics.yaml
