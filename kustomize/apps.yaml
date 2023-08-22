@@ -14,4 +14,4 @@ spec:
   sourceRef:
     kind: GitRepository
     name: weave-gitops-assured-demo
-  path: "./kustomize/platform"
+  path: "./kustomize/apps"
