@@ -1,4 +1,7 @@
 replicaCount: 2
+service:
+  enabled: false
+  externalPort: 80
 canary:
   enabled: true
   loadtester:
