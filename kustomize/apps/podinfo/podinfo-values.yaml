@@ -1,4 +1,10 @@
 replicaCount: 2
+canary:
+  enabled: true
+  loadtester:
+    url: "flagger-loadtester.istio-system:80"
+  ingress:
+    url: "istio-gateway.istio-system:80"
 resources:
   limits:
     memory: 256Mi

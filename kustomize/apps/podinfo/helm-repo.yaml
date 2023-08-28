@@ -6,4 +6,4 @@ metadata:
   namespace: podinfo
 spec:
   interval: 10m0s
-  url: https://stefanprodan.github.io/podinfo
+  url: https://weavegitops.github.io/application-promotion-podinfo2/
