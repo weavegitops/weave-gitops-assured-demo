@@ -49,9 +49,8 @@ export GH_USER=$(gh api user | jq -r '.login')
 ```
 #### Set up Git Repository
 ```
- gh repo create $GH_USER/weave-gitops-assured-demo --public --template=weavegitops/weave-gitops-assured-demo
- gh repo clone $GH_USER/weave-gitops-assured-demo
- cd weave-gitops-assured-demo
+gh repo create $GH_USER/weave-gitops-assured-demo --public --template=weavegitops/weave-gitops-assured-demo -c
+cd weave-gitops-assured-demo
 ```
 
 ```
@@ -102,9 +101,20 @@ flux create helmrelease podinfo \
 --chart=podinfo \
 --chart-version="1.5.29" \
 --values=kustomize/apps/podinfo/podinfo-values.yaml --export > kustomize/apps/podinfo/podinfo-helmrelease.yaml
+
+git add .
+git commit -m "adding podinfo application"
 ```
 
+#### Update application
 
+Deploy a podinfo HelmRelease
+
+```
+sed -i "s/1.5.29/1.5.30" kustomize/apps/podinfo/podinfo-helmrelease.yaml
+git add .
+git commit -m "Updating application"
+```
 
 
 ### GitOps Run
